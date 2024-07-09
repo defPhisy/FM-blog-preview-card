@@ -1,0 +1,50 @@
+/* Custom CSS Reset
+based on Josh Comeau's CSS Reset: https://www.joshwcomeau.com/css/custom-css-reset/
+and Andy Bell's Modern CSS Reset: https://piccalil.li/blog/a-more-modern-css-reset/ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+/* -webkit... only for Safari and MacOS with retina display */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, 
+button, input, label {
+  line-height: 1.1;
+}
+
+h1, h2, h3, h4 {
+  text-wrap: balance;
+}
+
+h1, h2, h3, h4,
+h5, h6, p {
+  overflow-wrap: break-word;
+}
+
+img, picture, video,
+canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* makes sure to use same font-family, font-size and font-weight for all elements */
+input, button,
+textarea, select {
+  font: inherit;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}

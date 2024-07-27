@@ -1,3 +1,75 @@
+/* Custom CSS Reset
+based on Josh Comeau's CSS Reset: https://www.joshwcomeau.com/css/custom-css-reset/
+and Andy Bell's Modern CSS Reset: https://piccalil.li/blog/a-more-modern-css-reset/ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+/* -webkit... only for Safari and MacOS with retina display */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
+  line-height: 1.1;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  overflow-wrap: break-word;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* makes sure to use same font-family, font-size and font-weight for all elements */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Page Styles */
 @font-face {
   font-family: "Figtree";
   src: url("../assets/fonts/Figtree-VariableFont_wght.ttf") format("truetype");
@@ -26,6 +98,8 @@
   --color-black: hsl(0, 0%, 7%);
   --color-yellow: hsl(47, 88%, 63%);
   --color-grey: hsl(0, 0%, 50%);
+
+  --color-visited: hsl(0, 0%, 7%);
 }
 
 body {
@@ -38,32 +112,30 @@ body {
 }
 
 .blog-card {
+  --width: calc(384 / 16 * 1rem); /* 384px converted into rem*/
   background-color: white;
   border-radius: 20px;
   border: 1px solid var(--color-black);
   box-shadow: 0.5rem 0.5rem 0px var(--color-black);
-  max-width: 384px;
+  max-width: var(--width);
   padding: 1.5rem;
   margin: 20px;
-}
-
-.blog-card-link {
-  text-decoration: none;
+  position: relative;
 }
 
 .blog-card:hover {
   box-shadow: 1rem 1rem 0px var(--color-black);
 }
 
-.blog-card-header {
-  border-radius: 20px 20px 0 0;
-  display: flex;
-  flex-direction: column;
-}
-
 .blog-card-img {
+  width: 100%;
   border-radius: 12px;
   margin-bottom: 1.5rem;
+}
+
+.blog-card-header {
+  display: flex;
+  flex-direction: column;
 }
 
 .blog-card-tag {
@@ -91,6 +163,36 @@ body {
   margin-bottom: 1rem;
 }
 
+.blog-card-link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 20px;
+}
+
+.blog-card-link {
+  text-decoration: none;
+}
+
+.blog-card-link:visited {
+  color: var(--color-black);
+}
+
+.blog-card-link:hover {
+  color: var(--color-yellow);
+}
+
+.blog-card-link:active {
+  color: var(--color-black);
+}
+
+.blog-card-link:focus {
+  outline: auto;
+}
+
 .blog-card-content {
   font-family: "Figtree";
   font-size: var(--fontSize-description);
@@ -104,12 +206,6 @@ body {
   display: flex;
   align-items: center;
   gap: 1rem;
-}
-
-.blog-card-author img {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
 }
 
 .blog-card-author figcaption {
